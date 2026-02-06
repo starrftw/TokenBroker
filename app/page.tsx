@@ -1,3 +1,11 @@
+'use client'
+
+import React from 'react';
+import dynamic from "next/dynamic";
+const ConnectButton = dynamic(
+  () => import("@/components/features/wallet/connect-button").then((mod) => mod.ConnectButton),
+  { ssr: false }
+);
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
@@ -10,26 +18,34 @@ export default function Home() {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-28 flex flex-col items-center text-center">
         <Badge variant="outline" className="mb-6 border-emerald-500/30 text-emerald-400 bg-emerald-500/10 px-4 py-1.5 text-xs uppercase tracking-[0.2em] font-bold">
-          The Builder's Toolkit
+          The Launch Skill for Agents
         </Badge>
         <h1 className="text-6xl md:text-9xl font-black tracking-tighter mb-8 bg-gradient-to-b from-white via-white to-slate-500 bg-clip-text text-transparent">
           TokenBroker
         </h1>
-        <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mb-12 leading-relaxed font-normal">
-          Empowering <span className="text-white font-bold underline decoration-emerald-500/50 underline-offset-8">Builders</span> to launch living economies for their projects on-the-go.
-          The complete agentic lifecycle for <span className="text-emerald-400 font-bold">nad.fun</span>.
+        <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mb-10 leading-relaxed font-normal">
+          The ultimate agentic toolkit for <span className="text-emerald-400 font-bold underline decoration-emerald-500/50 underline-offset-8">nad.fun</span>.
+          Your agent tracks your GitHub projects and launches them as devcoins on autopilot.
         </p>
-        <div className="flex flex-col sm:flex-row gap-6 mb-16">
+
+        <div className="mb-12">
+          <Link href="https://nad.fun/tokens/0xCE3d2E5C308669583c1fA7e585ce771cA9EA7777" target="_blank" className="inline-flex items-center gap-3 px-6 py-3 bg-slate-900/60 border border-emerald-500/20 rounded-2xl hover:bg-slate-900 transition-all group">
+            <span className="text-xs font-black text-emerald-500 uppercase tracking-widest">Official Token</span>
+            <span className="h-4 w-px bg-slate-800" />
+            <span className="text-sm font-mono text-slate-300 group-hover:text-white transition-colors">0xCE3d...7777</span>
+            <Rocket className="w-4 h-4 text-emerald-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </Link>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-6 mb-16 items-center">
           <Button size="lg" className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold h-16 px-12 transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(16,185,129,0.15)] rounded-full text-lg">
             <Link href="#install" className="flex items-center gap-2">
-              Get Started <Bot className="w-6 h-6" />
+              Get Started <Rocket className="w-6 h-6" />
             </Link>
           </Button>
-          <Button size="lg" variant="outline" className="border-slate-800 bg-slate-900/40 hover:bg-slate-900 hover:border-slate-700 text-slate-200 h-16 px-12 rounded-full transition-all text-lg backdrop-blur-sm">
-            <Link href="/profile" className="flex items-center gap-2">
-              Builder Profile <Zap className="w-6 h-6 text-yellow-500 fill-yellow-500" />
-            </Link>
-          </Button>
+          <ConnectButton />
+          <Link href="/profile" className="text-slate-400 hover:text-white transition-colors font-semibold text-sm">
+            View Profile &rarr;
+          </Link>
         </div>
 
         {/* Real-time stats or mini-dashboard feel could go here */}
@@ -185,9 +201,10 @@ export default function Home() {
             <p className="text-slate-500 text-sm font-medium">Empowering agents, launching the future.</p>
           </div>
           <div className="flex flex-wrap justify-center gap-x-12 gap-y-4 text-sm font-semibold text-slate-300">
-            <Link href="/tb_skill/SKILL.md" className="hover:text-emerald-400 transition-colors">Documentation</Link>
+            <Link href="https://nad.fun/tokens/0xCE3d2E5C308669583c1fA7e585ce771cA9EA7777" className="hover:text-emerald-400 transition-colors">$TOKEN</Link>
             <Link href="https://github.com/starrftw/tokenbroker" className="hover:text-emerald-400 transition-colors">GitHub</Link>
-            <Link href="https://code.claude.com/docs/en/skills" className="hover:text-emerald-400 transition-colors">Skills Framework</Link>
+            <Link href="https://x.com/starrftw/" className="hover:text-emerald-400 transition-colors">X / Twitter</Link>
+            <Link href="https://tb.dbuilder.xyz/" className="hover:text-emerald-400 transition-colors">Platform</Link>
           </div>
           <div className="text-xs text-slate-600 font-medium">
             &copy; 2026 TokenBroker. MIT License.

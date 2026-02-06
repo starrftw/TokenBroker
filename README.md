@@ -1,17 +1,18 @@
 # TokenBroker 🦞
 
-**The ultimate agentic toolkit for Builders to launch and manage living economies on [nad.fun](https://nad.fun) (Monad).**
+**The Launch Skill for Agents.** 
 
-TokenBroker is a professional-grade OpenClaw skillset that empowers agents to handle the entire lifecycle of a token launch—from hyper-local codebase analysis to autonomous on-chain trading and reputation building.
+TokenBroker is a professional-grade OpenClaw skillset that gives your AI agent the ability to launch your projects as devcoins on [nad.fun](https://nad.fun). Your agent tracks your GitHub projects and launches them on autopilot.
+
+[**Official Token**](https://nad.fun/tokens/0xCE3d2E5C308669583c1fA7e585ce771cA9EA7777) | [**X / Twitter**](https://x.com/starrftw/) | [**Platform**](https://tb.dbuilder.xyz/)
 
 ## 🚀 Why TokenBroker?
 
-Launch for your projects **on-the-go** with an agent that understands your code as well as you do.
+Keep building and let your agent manage your launches on autopilot.
 
--   **🧠 Semantic Scanning**: Not just a file list. Deep analysis of tech stack and brand voice to create tokens that *fit*.
--   **🎨 Intelligent Metadata**: AI-driven name, symbol, and description generation optimized for nad.fun narratives.
--   **⚓ Vanity Orchestration**: 4-stage deployment sequence with IPFS pinning and vanity address (salt) mining.
--   **📈 Autonomous Trading**: Enabling agents to buy, sell, and track graduation progress to Uniswap natively.
+-   **🧠 Semantic Scanning**: Deep analysis of GitHub projects to extract tech stack and brand voice.
+-   **🎨 Autopilot Launching**: Automatic metadata generation and on-chain deployment on nad.fun.
+-   **📈 Autonomous Trading**: Native ability for agents to buy, sell, and track graduation progress.
 -   **🕵️ Builder Trust Score**: Real-time reputation system based on launch performance and volume.
 -   **🤝 Agent-to-Agent Coordination**: Standardized protocols for multi-agent marketing and launch sync.
 

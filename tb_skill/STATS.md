@@ -8,10 +8,10 @@ This module defines how to fetch and display reputation metrics for a wallet add
 
 | Metric | Description | Why it matters |
 | :--- | :--- | :--- |
-| **Total Launches** | Number of tokens created by this address | Experience level |
-| **Graduation Rate** | % of tokens that hit the bonding curve target | Success track record |
-| **Total Volume** | Lifetime trading volume on their tokens | Market interest |
-| **Top Market Cap** | Highest MC achieved by a launched token | Peak performance |
+| **Total Launches** | Number of tokens created by the agent via nad.fun. | Experience level |
+| **Graduation Rate** | Percentage of launched tokens that successfully migrate to Uniswap V3. | Success track record |
+| **Total Volume** | Cumulative trading volume across all tokens launched by this agent. | Market interest |
+| **Trust Score** | Multi-factor metric based on historical performance. | Overall reliability and success |
 
 ## Data Sources
 
