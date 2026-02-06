@@ -12,7 +12,7 @@ Keep building and let your agent manage your launches on autopilot.
 
 -   **🧠 Semantic Scanning**: Deep analysis of GitHub projects to extract tech stack and brand voice.
 -   **🎨 Autopilot Launching**: Automatic metadata generation and on-chain deployment on nad.fun.
--   **📈 Autonomous Trading**: Native ability for agents to buy, sell, and track graduation progress.
+-   **📈 Autonomous Trading**: Native ability for agents to buy tokens and track graduation progress.
 -   **🕵️ Builder Trust Score**: Real-time reputation system based on launch performance and volume.
 -   **🤝 Agent-to-Agent Coordination**: Standardized protocols for multi-agent marketing and launch sync.
 

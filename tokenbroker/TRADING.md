@@ -1,15 +1,14 @@
-# TRADING.md - Token Trading Skill
+# TRADING.md - Token Buy Skill
 
-**Interact with your token after launch. Buy, sell, and track progress.**
+**Interact with your token after launch. Buy tokens and track progress.**
 
-This module enables agents to execute trades on the nad.fun bonding curve autonomously.
+This module enables agents to execute buy orders on the nad.fun bonding curve autonomously.
 
 ## Capabilities
 
-1.  **Price Discovery**: Get current buy/sell quotes.
+1.  **Price Discovery**: Get current buy quotes.
 2.  **Execute Buy**: Purchase tokens on the bonding curve.
-3.  **Execute Sell**: Sell tokens back to the curve.
-4.  **Monitor Progress**: Track how close a token is to graduating.
+3.  **Monitor Progress**: Track how close a token is to graduating.
 
 ## 1. Price Quotes (Lens)
 
@@ -48,34 +47,7 @@ const hash = await walletClient.writeContract({
 });
 ```
 
-## 3. Execute Sell (Router)
-
-Sell tokens back to the curve. Note: Requires token approval first.
-
-```typescript
-// 1. Approve Router
-await walletClient.writeContract({
-  address: tokenAddress,
-  abi: erc20Abi,
-  functionName: "approve",
-  args: [CONFIG.BONDING_CURVE_ROUTER, amountToSell]
-});
-
-// 2. Sell
-const hash = await walletClient.writeContract({
-  address: CONFIG.BONDING_CURVE_ROUTER,
-  abi: bondingCurveRouterAbi,
-  functionName: "sell",
-  args: [
-    tokenAddress,
-    amountToSell,
-    0n, // minAmountOut
-    account.address // recipient
-  ]
-});
-```
-
-## 4. Graduation Progress
+## 3. Graduation Progress
 
 Track when a token will graduate to a DEX (e.g., Uniswap).
 
@@ -91,8 +63,8 @@ const progress = await publicClient.readContract({
 
 ## Agent Instructions
 
-When asked to "buy the dip" or "check progress":
+When asked to "buy tokens" or "check progress":
 1.  **Check Balance**: Ensure wallet has MON.
 2.  **Get Quote**: Use `Lens` to show the user the expected return.
-3.  **Confirm**: Always ask for user confirmation before sending a trade transaction.
+3.  **Confirm**: Always ask for user confirmation before sending a buy transaction.
 4.  **Report**: Provide the transaction hash and current graduation progress.

@@ -76,7 +76,7 @@ export default function Home() {
           <FeatureCard
             icon={<BarChart3 className="w-8 h-8 text-yellow-500" />}
             title="Autonomous Trading"
-            desc="Enable your agents to interact with their own ecosystem. Buy, sell, and track graduation progress to Uniswap without human intervention."
+            desc="Enable your agents to interact with their own ecosystem. Buy tokens and track graduation progress to Uniswap without human intervention."
           />
           <FeatureCard
             icon={<ShieldCheck className="w-8 h-8 text-blue-500" />}
