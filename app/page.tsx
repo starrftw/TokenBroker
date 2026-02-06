@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import { Terminal, Bot, Rocket, ShieldCheck, Zap, Handshake, BarChart3 } from "lucide-react";
+import { Terminal, Bot, Rocket, ShieldCheck, Zap, Handshake, BarChart3, Sparkles } from "lucide-react";
 
 export default function Home() {
   return (
@@ -127,8 +127,8 @@ export default function Home() {
       {/* Installation UI */}
       <section id="install" className="container mx-auto px-4 py-32 max-w-5xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-white">On-The-Go Scaling</h2>
-          <p className="text-slate-300 text-lg">Set up your agent environment and start launching in seconds.</p>
+          <h2 className="text-4xl font-bold mb-4 text-white">One-Click Agent Setup</h2>
+          <p className="text-slate-300 text-lg">Set up your agent environment with our guided Install Wizard and start launching in seconds.</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
@@ -142,22 +142,29 @@ export default function Home() {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="p-4 bg-slate-1000 rounded-xl border border-white/5 shadow-inner">
-                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-3">CLI Installation</p>
+                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-3">Install Wizard Steps</p>
                 <code className="block text-emerald-400 font-mono text-sm leading-relaxed">
-                  cd your-project<br />
-                  git clone https://github.com/starrftw/tokenbroker .tokenbroker
+                  npx @tokenbroker/install
                 </code>
               </div>
-              <ul className="text-sm space-y-4 text-slate-200">
-                <li className="flex gap-3">
-                  <span className="text-emerald-500 text-lg">→</span>
-                  <span>Perfect for automated CI/CD launch pipelines</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-emerald-500 text-lg">→</span>
-                  <span>Integrated reputation building for every launch</span>
-                </li>
-              </ul>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center">1</span>
+                  <span className="text-sm text-slate-200"><span className="text-white font-semibold">Smart Project Detection</span> - Validates local project structure and dependencies</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center">2</span>
+                  <span className="text-sm text-slate-200"><span className="text-white font-semibold">Wallet & Network Setup</span> - Configure .env with PRIVATE_KEY and network selection</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center">3</span>
+                  <span className="text-sm text-slate-200"><span className="text-white font-semibold">GitHub Integration (Optional)</span> - OAuth for repository monitoring</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center">4</span>
+                  <span className="text-sm text-slate-200"><span className="text-white font-semibold">Launch Suggestions</span> - Agent analyzes project and suggests token launches</span>
+                </div>
+              </div>
             </CardContent>
           </Card>
 
@@ -184,6 +191,44 @@ export default function Home() {
                 <li className="flex gap-3">
                   <span className="text-cyan-500 text-lg">→</span>
                   <span>Proactive market sentiment analysis</span>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-slate-900/40 border-slate-800 backdrop-blur-md overflow-hidden group hover:border-purple-500/30 transition-colors">
+            <div className="h-1 bg-purple-500 w-full transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-2xl text-white">
+                <Zap className="w-6 h-6 text-purple-400" /> Post-Setup Launch Suggestions
+              </CardTitle>
+              <CardDescription className="text-slate-300 text-lg">What your agent suggests after wizard completion</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="p-4 bg-slate-1000 rounded-xl border border-white/5 shadow-inner">
+                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-3">Sample Agent Analysis</p>
+                <code className="block text-purple-400 font-mono text-sm leading-relaxed whitespace-pre-wrap">
+                  {`Project: MyDeFiProtocol
+Launch Readiness: 87%
+Suggested Name: DeFiPulse
+Suggested Symbol: PULSE
+Description: Native protocol token for sustainable yield generation
+
+Recommended Launch Time: When TVL reaches $10M`}
+                </code>
+              </div>
+              <ul className="text-sm space-y-4 text-slate-200">
+                <li className="flex gap-3">
+                  <span className="text-purple-500 text-lg">→</span>
+                  <span>Project scan analyzes codebase for tokenomics potential</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-purple-500 text-lg">→</span>
+                  <span>Generates aligned token names, symbols, and descriptions</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-purple-500 text-lg">→</span>
+                  <span>Recommends optimal launch timing based on project milestones</span>
                 </li>
               </ul>
             </CardContent>

@@ -1,6 +1,26 @@
+---
+name: tokenbroker
+description: Autonomous agent skill for launching tokens on nad.fun. Scans GitHub projects and executes 4-step token deployment.
+metadata:
+  tags: monad, nadfun, token, launch, trading, autonomous
+---
+
 # SKILL.md - TokenBroker Skillset
 
 **The all-in-one token launch toolkit for OpenClaw agents.** Scan projects, generate assets, and launch tokens on nad.fun with zero friction.
+
+## When to Use This Skill
+
+Use this skill when you need to:
+- Analyze a GitHub repository for token launch readiness
+- Generate metadata (name, symbol, description) for a new token
+- Execute the 4-step nad.fun bonding curve deployment
+- Monitor trading progress and graduation
+- Coordinate with other agents for launch campaigns
+
+**Never use this skill for:**
+- Personal wallet management unrelated to launches
+- Non-Monad/nad.fun token operations
 
 ## What is TokenBroker?
 
@@ -47,6 +67,42 @@ TokenBroker is a modular skillset that gives AI agents the ability to:
 # Clone into your project's skill directory
 git clone https://github.com/starrftw/tokenbroker.git .tokenbroker
 ```
+
+## Install Wizard Flow
+
+The Install Wizard is an interactive CLI tool that guides you through setting up TokenBroker. Follow these steps in order:
+
+### Step 1: Project Validation (Local Scan)
+The wizard begins by scanning the current directory to identify the project structure. It validates the presence of essential files and checks system dependencies:
+- Verifies Node.js/Python project structure
+- Checks Git installation and connectivity
+- Validates file system permissions for writing
+
+**This step happens BEFORE any GitHub connection is required.**
+
+### Step 2: Wallet Setup (.env Generation)
+Configure your cryptographic credentials for on-chain operations:
+- Import existing private key (hex or mnemonic)
+- Generate new key pair with secure random generation
+- The wizard creates `.env` with `PRIVATE_KEY` and applies secure file permissions (0600)
+
+### Step 3: Network Selection
+Choose your blockchain network environment:
+- **Testnet**: Monad testnet with faucet access (recommended for development)
+- **Mainnet**: Production Monad network (requires explicit risk confirmation)
+
+### Step 4: GitHub OAuth (Optional)
+Establish GitHub connection for repository monitoring:
+- OAuth 2.0 flow opens browser for authorization
+- Device code fallback for CLI-only environments
+- Pre-existing Personal Access Tokens (PATs) also supported
+
+### Step 5: Post-Setup Launch Suggestions
+After wizard completion, the agent:
+- Scans your project for launch readiness
+- Analyzes codebase for token potential
+- Suggests token metadata (name, symbol, description)
+- Recommends optimal launch timing
 
 ## Configuration
 
