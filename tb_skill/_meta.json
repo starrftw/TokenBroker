@@ -1,0 +1,8 @@
+{
+  "name": "TokenBroker",
+  "version": "1.0.0",
+  "description": "Automated token launch preparation and deployment for nad.fun on Monad.",
+  "author": "TokenBrokerTeam",
+  "license": "MIT",
+  "tags": ["monad", "nadfun", "token", "launch", "marketing"]
+}
