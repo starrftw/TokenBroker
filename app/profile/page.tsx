@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { ArrowLeft, Award, TrendingUp, Rocket, Loader2 } from "lucide-react";
+import { ArrowLeft, Award, TrendingUp, Rocket, Loader2, Twitter, MessageSquare, Globe, Users, Wallet, ExternalLink, Activity } from "lucide-react";
 import { useAccount } from "wagmi";
 import { useQuery } from "@tanstack/react-query";
 import nextDynamic from "next/dynamic";
@@ -91,7 +91,7 @@ export default function ProfilePage() {
 
     return (
         <div className="min-h-screen bg-slate-950 text-slate-50 p-8">
-            <div className="container mx-auto max-w-4xl">
+            <div className="container mx-auto max-w-5xl">
                 <div className="flex justify-between items-center mb-12">
                     <Link href="/" className="inline-flex items-center text-slate-400 hover:text-white transition-colors">
                         <ArrowLeft className="mr-2 w-4 h-4" /> Back to Home
@@ -140,9 +140,12 @@ export default function ProfilePage() {
                     />
                 </div>
 
-                <Card className="bg-slate-900/40 border-slate-800 backdrop-blur-md rounded-3xl overflow-hidden">
-                    <CardHeader className="border-b border-white/5 bg-white/2 pb-6">
-                        <CardTitle className="text-2xl text-white">Recent Activity</CardTitle>
+                <Card className="bg-slate-900/40 border-slate-800 backdrop-blur-md rounded-[2.5rem] overflow-hidden">
+                    <CardHeader className="border-b border-white/5 bg-white/2 py-8 px-10">
+                        <div className="flex items-center justify-between">
+                            <CardTitle className="text-2xl text-white font-black tracking-tight">Portfolio Activity</CardTitle>
+                            <Badge variant="outline" className="border-emerald-500/20 text-emerald-400">{filteredTokens.length} Tokens</Badge>
+                        </div>
                     </CardHeader>
                     <CardContent className="p-0">
                         {isLoading ? (
@@ -151,15 +154,11 @@ export default function ProfilePage() {
                                 <p>Scanning blockchain for your tokens...</p>
                             </div>
                         ) : filteredTokens && filteredTokens.length > 0 ? (
-                            <div className="divide-y divide-white/5">
+                            <div className="">
                                 {filteredTokens.map((token: any) => (
                                     <ActivityItem
                                         key={`${token.network}-${token.token_id || token.address}`}
-                                        action="Launched Token"
-                                        item={`$${token.symbol}`}
-                                        time={new Date(token.created_at * 1000).toLocaleDateString()}
-                                        isGraduated={token.is_graduated}
-                                        network={token.network}
+                                        token={token}
                                     />
                                 ))}
                             </div>
@@ -191,23 +190,104 @@ function StatCard({ label, value, icon }: { label: string, value: any, icon: any
     );
 }
 
-function ActivityItem({ action, item, time, isGraduated, network }: { action: string, item: string, time: string, isGraduated?: boolean, network: string }) {
+function ActivityItem({ token }: { token: any }) {
+    const marketCap = (parseFloat(token.price_usd) || 0) * (Number(BigInt(token.total_supply || 0)) / 1e18);
+    const volume = Number(BigInt(token.volume || 0)) / 1e18;
+    const holdings = Number(BigInt(token.balance || 0)) / 1e18;
+
     return (
-        <div className="flex justify-between items-center p-6 hover:bg-white/2 transition-all">
-            <div className="flex items-center gap-4">
-                <div className={`p-2 rounded-lg ${isGraduated ? 'bg-purple-500/10' : 'bg-emerald-500/10'}`}>
-                    <Rocket className={`w-4 h-4 ${isGraduated ? 'text-purple-400' : 'text-emerald-400'}`} />
+        <div className="p-6 hover:bg-white/2 transition-all group border-b border-white/5 last:border-0">
+            <div className="flex flex-col md:flex-row gap-6">
+                {/* Token Icon & Header info */}
+                <div className="flex gap-4 flex-1">
+                    <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shrink-0">
+                        {token.image_uri ? (
+                            <img src={token.image_uri} alt={token.name} className="w-full h-full object-cover" />
+                        ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-emerald-500/10">
+                                <Rocket className="w-6 h-6 text-emerald-400" />
+                            </div>
+                        )}
+                        <Badge className={`absolute bottom-0 right-0 rounded-none rounded-tl-lg text-[8px] uppercase font-bold border-none px-1.5 py-0.5 ${token.network === 'mainnet' ? 'bg-emerald-600 text-white' : 'bg-blue-600 text-white'}`}>
+                            {token.network}
+                        </Badge>
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between mb-1">
+                            <div>
+                                <h3 className="text-xl font-bold text-white truncate group-hover:text-emerald-400 transition-colors uppercase tracking-tight">
+                                    {token.name} <span className="text-slate-500 text-sm font-medium ml-1">${token.symbol}</span>
+                                </h3>
+                                <div className="flex items-center gap-2 mt-1">
+                                    {token.is_graduated && (
+                                        <Badge className="bg-purple-500/20 text-purple-400 border-none text-[10px] uppercase font-black tracking-wider">
+                                            Graduated
+                                        </Badge>
+                                    )}
+                                    <span className="text-xs text-slate-500 font-medium">Launched {new Date(token.created_at * 1000).toLocaleDateString()}</span>
+                                </div>
+                            </div>
+
+                            <div className="flex gap-2">
+                                {token.twitter && (
+                                    <a href={token.twitter} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-all">
+                                        <Twitter className="w-4 h-4" />
+                                    </a>
+                                )}
+                                {token.telegram && (
+                                    <a href={token.telegram} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-all">
+                                        <MessageSquare className="w-4 h-4" />
+                                    </a>
+                                )}
+                                {token.website && (
+                                    <a href={token.website} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-all">
+                                        <Globe className="w-4 h-4" />
+                                    </a>
+                                )}
+                                <a href={`https://nad.fun/tokens/${token.token_id || token.address}`} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 transition-all">
+                                    <ExternalLink className="w-4 h-4" />
+                                </a>
+                            </div>
+                        </div>
+
+                        <p className="text-sm text-slate-400 line-clamp-2 mt-2 font-medium leading-relaxed">
+                            {token.description || "No description provided for this launch."}
+                        </p>
+                    </div>
                 </div>
-                <div>
-                    <span className="text-slate-300 font-semibold">{action}</span>
-                    <span className={`ml-3 font-bold ${isGraduated ? 'text-purple-400' : 'text-emerald-400'}`}>{item}</span>
-                    <Badge variant="outline" className={`ml-3 text-[10px] uppercase font-bold ${network === 'mainnet' ? 'border-emerald-500/30 text-emerald-400' : 'border-blue-500/30 text-blue-400'}`}>
-                        {network}
-                    </Badge>
-                    {isGraduated && <Badge className="ml-3 bg-purple-500/20 text-purple-400 border-none text-[10px] uppercase font-black">Graduated</Badge>}
+
+                {/* Market Stats Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:w-1/2 shrink-0">
+                    <div className="bg-white/2 rounded-2xl p-3 border border-white/5">
+                        <div className="flex items-center gap-1.5 text-slate-500 text-[10px] uppercase font-bold mb-1">
+                            <TrendingUp className="w-3 h-3" /> Market Cap
+                        </div>
+                        <div className="text-sm font-bold text-white">${marketCap.toLocaleString(undefined, { maximumFractionDigits: 0 })}</div>
+                    </div>
+
+                    <div className="bg-white/2 rounded-2xl p-3 border border-white/5">
+                        <div className="flex items-center gap-1.5 text-slate-500 text-[10px] uppercase font-bold mb-1">
+                            <Users className="w-3 h-3" /> Holders
+                        </div>
+                        <div className="text-sm font-bold text-white">{token.holder_count || 0}</div>
+                    </div>
+
+                    <div className="bg-white/2 rounded-2xl p-3 border border-white/5">
+                        <div className="flex items-center gap-1.5 text-slate-500 text-[10px] uppercase font-bold mb-1">
+                            <Activity className="w-3 h-3" /> 24h Vol
+                        </div>
+                        <div className="text-sm font-bold text-emerald-400">{volume.toFixed(2)} MON</div>
+                    </div>
+
+                    <div className="bg-white/2 rounded-2xl p-3 border border-emerald-500/10 bg-emerald-500/5">
+                        <div className="flex items-center gap-1.5 text-emerald-400/70 text-[10px] uppercase font-bold mb-1">
+                            <Wallet className="w-3 h-3" /> Your Bag
+                        </div>
+                        <div className="text-sm font-black text-emerald-400">{holdings.toLocaleString(undefined, { maximumFractionDigits: 0 })} {token.symbol}</div>
+                    </div>
                 </div>
             </div>
-            <span className="text-sm font-medium text-slate-500">{time}</span>
         </div>
     )
 }

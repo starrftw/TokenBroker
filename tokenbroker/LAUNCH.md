@@ -14,56 +14,58 @@ This skill orchestrates the 4-step process required to deploy a bonding curve to
 
 ### Step 1: Upload Image via API
 
-Upload the raw image buffer to receive an IPFS URI.
+Upload the token image to receive a validated IPFS URI.
 
 ```typescript
-// POST /agent/token/image
-const imageRes = await fetch(`${CONFIG.apiUrl}/agent/token/image`, {
+// POST /metadata/image
+const imageRes = await fetch(`${CONFIG.apiUrl}/metadata/image`, {
   method: "POST",
   headers: { "Content-Type": "image/png" },
-  body: imageBuffer // Raw Buffer, NOT FormData
+  body: imageBuffer // Raw binary data
 });
 const { image_uri, is_nsfw } = await imageRes.json();
 ```
 
 ### Step 2: Upload Metadata via API
 
-Combine the `image_uri` with other details to get the final `metadata_uri`.
+Create the token metadata JSON.
 
 ```typescript
-// POST /agent/token/metadata
-const metaRes = await fetch(`${CONFIG.apiUrl}/agent/token/metadata`, {
+// POST /metadata/metadata
+const metaRes = await fetch(`${CONFIG.apiUrl}/metadata/metadata`, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
-    name: "My Token",
-    symbol: "MTK",
-    description: "...",
     image_uri: image_uri,
-    // ...social links
+    name: "Project Name",
+    symbol: "SYMBOL",
+    description: "...",
+    website: "https://...",
+    twitter: "https://x.com/...",
+    telegram: "https://t.me/..."
   })
 });
 const { metadata_uri } = await metaRes.json();
 ```
 
-### Step 3: Mine Salt for Vanity Address
+### Step 3: Mine Salt (Vanity Address)
 
-Generate a salt to determine the future contract address.
+Generate a salt that ensures the token address ends with **"7777"**.
 
 ```typescript
-// POST /agent/salt
-const saltRes = await fetch(`${CONFIG.apiUrl}/agent/salt`, {
+// POST /token/salt
+const saltRes = await fetch(`${CONFIG.apiUrl}/token/salt`, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
     creator: account.address,
-    name: "My Token",
-    symbol: "MTK",
+    name: "Project Name",
+    symbol: "SYMBOL",
     metadata_uri: metadata_uri
   })
 });
 const { salt, address } = await saltRes.json();
-// 'address' is the PREDICTED address where the token will live.
+// 'address' will end in ...7777
 ```
 
 ### Step 4: Create On-Chain

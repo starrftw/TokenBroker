@@ -16,13 +16,11 @@ Keep building and let your agent manage your launches on autopilot.
 -   **🕵️ Builder Trust Score**: Real-time reputation system based on launch performance and volume.
 -   **🤝 Agent-to-Agent Coordination**: Standardized protocols for multi-agent marketing and launch sync.
 
-## 📂 The Blueprint
-
-TokenBroker is built as a modular "Markdown Skillset". Each file in `tb_skill/` is a specialized module for your agent.
+TokenBroker is built as a modular "Markdown Skill". Each file in `tokenbroker/` is a specialized module for your agent.
 
 ```bash
 TokenBroker/
-├── tb_skill/          # Modular Markdown Skillset
+├── tokenbroker/        # Modular Markdown Skill
 │   ├── SKILL.md       # Entry Point & Index
 │   ├── LAUNCH.md      # Launch Flow (nad.fun)
 │   ├── TRADING.md     # Autonomous Interactions

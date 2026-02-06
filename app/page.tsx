@@ -99,7 +99,7 @@ export default function Home() {
             <div className="space-y-6 text-slate-300 text-lg leading-relaxed">
               <p>
                 TokenBroker is built as a modular <span className="text-white font-semibold italic">skillset</span>.
-                Each file in the <code className="text-emerald-400">tb_skill/</code> directory is a specialized module your agent can read, interpret, and execute.
+                Each file in the <code className="text-emerald-400">tokenbroker/</code> directory is a specialized module your agent can read, interpret, and execute.
               </p>
               <p>
                 This "Markdown-first" architecture ensures your agents have perfect context for every action, from scanning local files to executing on-chain trades.
@@ -111,7 +111,7 @@ export default function Home() {
               <Bot className="w-32 h-32 text-emerald-500" />
             </div>
             <pre className="font-mono text-sm text-slate-400 leading-relaxed">
-              <span className="text-emerald-500 font-bold">tb_skill/</span><br />
+              <span className="text-emerald-500 font-bold">tokenbroker/</span><br />
               ├── <span className="text-white">SKILL.md</span>        <span className="text-slate-600"># Entry point & index</span><br />
               ├── <span className="text-white">PROJECT-SCAN.md</span> <span className="text-slate-600"># AI Identity extraction</span><br />
               ├── <span className="text-white">LAUNCH.md</span>       <span className="text-slate-600"># 4-stage nad.fun flow</span><br />

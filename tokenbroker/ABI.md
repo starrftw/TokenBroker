@@ -1,6 +1,6 @@
 # ABI.md - Smart Contract Interfaces
 
-Reference ABIs for Monad / nad.fun integration.
+Reference ABIs for TokenBroker / nad.fun integration.
 
 ## BondingCurveRouter
 
