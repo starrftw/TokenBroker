@@ -54,7 +54,7 @@ Ensure your environment is set up for Monad:
 
 ```bash
 NETWORK=testnet # or mainnet
-PRIVATE_KEY=0x... # Your wallet private key
+PRIVATE_KEY=YOUR_PRIVATE_KEY_HERE
 # NAD_API_KEY=... # Optional: for higher rate limits
 ```
 

@@ -24,9 +24,9 @@ export default function ProfilePage() {
         queryFn: async () => {
             if (!address) return [];
 
-            // Correct API endpoints from nad.fun documentation
-            const mainnetApi = `https://api.nadapp.net/agent/token/created/${address}`;
-            const testnetApi = `https://dev-api.nad.fun/agent/token/created/${address}`;
+            // Fetch via local API proxy to bypass CORS on production
+            const mainnetApi = `/api/nadfun/agent/token/created/${address}?network=mainnet`;
+            const testnetApi = `/api/nadfun/agent/token/created/${address}?network=testnet`;
 
             try {
                 const [mainnetRes, testnetRes] = await Promise.all([
