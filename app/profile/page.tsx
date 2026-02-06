@@ -23,8 +23,8 @@ export default function ProfilePage() {
 
                 <div className="flex items-center justify-between mb-8">
                     <div>
-                        <h1 className="text-3xl font-bold">Builder Profile</h1>
-                        <p className="text-slate-400 font-mono">{stats.address}</p>
+                        <h1 className="text-3xl font-bold text-white">Builder Profile</h1>
+                        <p className="text-slate-200 font-mono">{stats.address}</p>
                     </div>
                     <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-lg px-4 py-1">
                         Trust Score: {stats.trustScore}
@@ -72,8 +72,8 @@ function StatCard({ label, value, icon }: { label: string, value: any, icon: any
         <Card className="bg-slate-900 border-slate-800 text-center py-4">
             <CardContent className="p-0 flex flex-col items-center">
                 <div className="mb-2 p-2 bg-slate-950 rounded-full">{icon}</div>
-                <div className="text-2xl font-bold">{value}</div>
-                <div className="text-xs text-slate-500 uppercase tracking-widest">{label}</div>
+                <div className="text-2xl font-bold text-white">{value}</div>
+                <div className="text-xs text-slate-300 uppercase tracking-widest font-semibold">{label}</div>
             </CardContent>
         </Card>
     );
@@ -86,7 +86,7 @@ function ActivityItem({ action, item, time }: { action: string, item: string, ti
                 <span className="text-slate-300 font-medium">{action}</span>
                 <span className="text-emerald-400 ml-2">{item}</span>
             </div>
-            <span className="text-sm text-slate-500">{time}</span>
+            <span className="text-sm text-slate-300">{time}</span>
         </div>
     )
 }

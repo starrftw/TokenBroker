@@ -8,72 +8,111 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-emerald-500/30">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-24 flex flex-col items-center text-center">
-        <Badge variant="outline" className="mb-4 border-emerald-500/50 text-emerald-400 bg-emerald-500/10 px-3 py-1 text-xs uppercase tracking-widest font-bold">
-          Agentic Skillset v1.0
+      <section className="container mx-auto px-4 py-28 flex flex-col items-center text-center">
+        <Badge variant="outline" className="mb-6 border-emerald-500/30 text-emerald-400 bg-emerald-500/10 px-4 py-1.5 text-xs uppercase tracking-[0.2em] font-bold">
+          The Builder's Toolkit
         </Badge>
-        <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent">
+        <h1 className="text-6xl md:text-9xl font-black tracking-tighter mb-8 bg-gradient-to-b from-white via-white to-slate-500 bg-clip-text text-transparent">
           TokenBroker
         </h1>
-        <p className="text-xl text-slate-200 max-w-2xl mb-10 leading-relaxed font-medium">
-          The ultimate agentic toolkit for <span className="text-emerald-400 font-bold underline decoration-emerald-500/50 underline-offset-8">nad.fun</span>.
-          Scan projects, generate assets, and launch tokens on Monad.
+        <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mb-12 leading-relaxed font-normal">
+          Empowering <span className="text-white font-bold underline decoration-emerald-500/50 underline-offset-8">Builders</span> to launch living economies for their projects on-the-go.
+          The complete agentic lifecycle for <span className="text-emerald-400 font-bold">nad.fun</span>.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Button size="lg" className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold h-14 px-10 transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(16,185,129,0.2)] rounded-full">
-            <Link href="https://github.com/starrftw/tokenbroker" className="flex items-center gap-2">
-              Get Started <Bot className="w-5 h-5" />
+        <div className="flex flex-col sm:flex-row gap-6 mb-16">
+          <Button size="lg" className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold h-16 px-12 transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(16,185,129,0.15)] rounded-full text-lg">
+            <Link href="#install" className="flex items-center gap-2">
+              Get Started <Bot className="w-6 h-6" />
             </Link>
           </Button>
-          <Button size="lg" variant="outline" className="border-slate-800 bg-slate-900/50 hover:bg-slate-900 hover:border-slate-700 text-slate-200 h-14 px-10 rounded-full transition-all">
+          <Button size="lg" variant="outline" className="border-slate-800 bg-slate-900/40 hover:bg-slate-900 hover:border-slate-700 text-slate-200 h-16 px-12 rounded-full transition-all text-lg backdrop-blur-sm">
             <Link href="/profile" className="flex items-center gap-2">
-              Builder Profile <Zap className="w-5 h-5 text-yellow-500 fill-yellow-500" />
+              Builder Profile <Zap className="w-6 h-6 text-yellow-500 fill-yellow-500" />
             </Link>
           </Button>
         </div>
+
+        {/* Real-time stats or mini-dashboard feel could go here */}
       </section>
 
-      {/* Feature Grid */}
-      <section className="container mx-auto px-4 py-20">
+      {/* Feature Grid - Explaining the Depth */}
+      <section className="container mx-auto px-4 py-24 bg-slate-1000/50 border-y border-white/5">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4 text-white">Advanced Orchestration</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">Beyond simple launching. We provide the full infrastructure for autonomous token management.</p>
+        </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <FeatureCard
             icon={<Terminal className="w-8 h-8 text-emerald-400" />}
-            title="Project Scanning"
-            desc="Deep codebase analysis to extract identity, tech stack, and brand voice for your token identity."
+            title="Semantic Scanning"
+            desc="Our agent doesn't just list files. It analyzes brand voice, tech stack, and project mission to generate identity-aligned tokens that feel native to your project."
           />
           <FeatureCard
             icon={<Bot className="w-8 h-8 text-cyan-400" />}
-            title="AI Metadata Gen"
-            desc="Generate names, symbols, and descriptions that resonate with your project's unique soul."
+            title="Intelligent Metadata"
+            desc="Ditch the generic names. Generate symbols and descriptions that resonate with your project's unique soul, fully optimized for nad.fun bonding curves."
           />
           <FeatureCard
             icon={<Rocket className="w-8 h-8 text-purple-400" />}
-            title="One-Click Launch"
-            desc="Automated orchestration on nad.fun with vanity address mining and IPFS metadata pinning."
+            title="Vanity Orchestration"
+            desc="Automated 4-step deployment sequence including IPFS metadata pinning and salt mining for predicted contract addresses. Professional grade infra."
           />
           <FeatureCard
             icon={<BarChart3 className="w-8 h-8 text-yellow-500" />}
-            title="Trading Skill"
-            desc="Enable agents to buy, sell, and track graduation progress of their own tokens autonomously."
+            title="Autonomous Trading"
+            desc="Enable your agents to interact with their own ecosystem. Buy, sell, and track graduation progress to Uniswap without human intervention."
           />
           <FeatureCard
             icon={<ShieldCheck className="w-8 h-8 text-blue-500" />}
-            title="Reputation System"
-            desc="Real-time trust scoring and builder metrics to verify legitimacy and track long-term success."
+            title="On-Chain Reputation"
+            desc="Every launch builds your trust score. Real-time metrics verify legitimacy and track volume, creating a verifiable record of builder success."
           />
           <FeatureCard
             icon={<Handshake className="w-8 h-8 text-pink-500" />}
-            title="A2A Coordination"
-            desc="Standardized protocols for agent-to-agent collaboration and automated ecosystem interaction."
+            title="Agent Coordination"
+            desc="Standardized A2A protocols. Let your marketing agent talk to your launch agent. Native coordination for complex on-chain operations."
           />
+        </div>
+      </section>
+
+      {/* Project Structure - The "Blueprint" */}
+      <section className="container mx-auto px-4 py-32 max-w-6xl">
+        <div className="flex flex-col lg:flex-row gap-16 items-center">
+          <div className="flex-1 space-y-8">
+            <h2 className="text-5xl font-bold text-white tracking-tight">The Blueprint.</h2>
+            <div className="space-y-6 text-slate-300 text-lg leading-relaxed">
+              <p>
+                TokenBroker is built as a modular <span className="text-white font-semibold italic">skillset</span>.
+                Each file in the <code className="text-emerald-400">tb_skill/</code> directory is a specialized module your agent can read, interpret, and execute.
+              </p>
+              <p>
+                This "Markdown-first" architecture ensures your agents have perfect context for every action, from scanning local files to executing on-chain trades.
+              </p>
+            </div>
+          </div>
+          <div className="flex-1 w-full p-8 bg-slate-900/50 border border-slate-800 rounded-3xl backdrop-blur-xl shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+              <Bot className="w-32 h-32 text-emerald-500" />
+            </div>
+            <pre className="font-mono text-sm text-slate-400 leading-relaxed">
+              <span className="text-emerald-500 font-bold">tb_skill/</span><br />
+              ├── <span className="text-white">SKILL.md</span>        <span className="text-slate-600"># Entry point & index</span><br />
+              ├── <span className="text-white">PROJECT-SCAN.md</span> <span className="text-slate-600"># AI Identity extraction</span><br />
+              ├── <span className="text-white">LAUNCH.md</span>       <span className="text-slate-600"># 4-stage nad.fun flow</span><br />
+              ├── <span className="text-white">TRADING.md</span>      <span className="text-slate-600"># Autonomous buy/sell</span><br />
+              ├── <span className="text-white">PROMO.md</span>        <span className="text-slate-600"># Marketing & A2A sync</span><br />
+              ├── <span className="text-white">STATS.md</span>        <span className="text-slate-600"># Reputation logic</span><br />
+              └── <span className="text-white">ABI.md</span>          <span className="text-slate-600"># Contract interfaces</span>
+            </pre>
+          </div>
         </div>
       </section>
 
       {/* Installation UI */}
-      <section id="install" className="container mx-auto px-4 py-24 max-w-5xl">
+      <section id="install" className="container mx-auto px-4 py-32 max-w-5xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-white">First Steps</h2>
-          <p className="text-slate-300 text-lg">Set up your agent environment and start launching.</p>
+          <h2 className="text-4xl font-bold mb-4 text-white">On-The-Go Scaling</h2>
+          <p className="text-slate-300 text-lg">Set up your agent environment and start launching in seconds.</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
@@ -81,13 +120,13 @@ export default function Home() {
             <div className="h-1 bg-emerald-500 w-full transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl text-white">
-                <Terminal className="w-6 h-6 text-emerald-400" /> Agent CLI Setup
+                <Terminal className="w-6 h-6 text-emerald-400" /> Professional Integration
               </CardTitle>
-              <CardDescription className="text-slate-300 text-lg">Initialize the skillset via terminal</CardDescription>
+              <CardDescription className="text-slate-300 text-lg">Add to your existing project pipeline</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="p-4 bg-slate-1000 rounded-xl border border-white/5 shadow-inner">
-                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-3">Install via Git</p>
+                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-3">CLI Installation</p>
                 <code className="block text-emerald-400 font-mono text-sm leading-relaxed">
                   cd your-project<br />
                   git clone https://github.com/starrftw/tokenbroker .tokenbroker
@@ -95,17 +134,12 @@ export default function Home() {
               </div>
               <ul className="text-sm space-y-4 text-slate-200">
                 <li className="flex gap-3">
-                  <span className="text-emerald-500">✓</span>
-                  <span>Verify source code manually for safety</span>
+                  <span className="text-emerald-500 text-lg">→</span>
+                  <span>Perfect for automated CI/CD launch pipelines</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-emerald-500">✓</span>
-                  <span>Fully compatible with the OpenClaw framework</span>
-                </li>
-                <li className="flex gap-3 mt-4 pt-4 border-t border-white/5">
-                  <Link href="https://code.claude.com/docs/en/skills" className="text-emerald-400 hover:text-emerald-300 font-bold transition-colors inline-flex items-center gap-2">
-                    Learn how Skills work <Zap className="w-4 h-4" />
-                  </Link>
+                  <span className="text-emerald-500 text-lg">→</span>
+                  <span>Integrated reputation building for every launch</span>
                 </li>
               </ul>
             </CardContent>
@@ -115,29 +149,25 @@ export default function Home() {
             <div className="h-1 bg-cyan-500 w-full transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl text-white">
-                <Bot className="w-6 h-6 text-cyan-400" /> First Interaction
+                <Bot className="w-6 h-6 text-cyan-400" /> Agent-Ready Prompts
               </CardTitle>
-              <CardDescription className="text-slate-300 text-lg">Guide your agent to find opportunities</CardDescription>
+              <CardDescription className="text-slate-300 text-lg">Commands your agent understands natively</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="p-4 bg-slate-1000 rounded-xl border border-white/5 shadow-inner">
-                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-3">Starting Prompts</p>
+                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-3">Interactive Examples</p>
                 <code className="block text-cyan-400 font-mono text-sm leading-relaxed whitespace-pre-wrap">
-                  "Analyze my current project and suggest if it is a good fit for a nad.fun launch."
+                  "Analyze my project architecture and suggest a token name that fits our brand voice."
                 </code>
               </div>
               <ul className="text-sm space-y-4 text-slate-200">
                 <li className="flex gap-3">
-                  <span className="text-cyan-500">✓</span>
-                  <span>Identify creative hook for new tokens</span>
+                  <span className="text-cyan-500 text-lg">→</span>
+                  <span>Automated launch schedule suggestions</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-cyan-500">✓</span>
-                  <span>Draft suggestions to your human builder</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-cyan-500">✓</span>
-                  <span>Plan an automated launch schedule</span>
+                  <span className="text-cyan-500 text-lg">→</span>
+                  <span>Proactive market sentiment analysis</span>
                 </li>
               </ul>
             </CardContent>
@@ -173,10 +203,10 @@ function FeatureCard({ icon, title, desc }: { icon: any, title: string, desc: st
     <Card className="bg-slate-900/30 border-slate-800/50 hover:border-emerald-500/30 transition-all hover:bg-slate-900/50 group">
       <CardHeader>
         <div className="mb-4 bg-slate-950 inline-block p-3 rounded-2xl group-hover:scale-110 transition-transform duration-300 shadow-xl shadow-black/50">{icon}</div>
-        <CardTitle className="text-xl tracking-wide">{title}</CardTitle>
+        <CardTitle className="text-xl tracking-wide text-white group-hover:text-emerald-400 transition-colors">{title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-slate-400 leading-relaxed text-sm">{desc}</p>
+        <p className="text-slate-300 leading-relaxed text-sm">{desc}</p>
       </CardContent>
     </Card>
   );

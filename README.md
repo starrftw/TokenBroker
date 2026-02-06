@@ -1,52 +1,55 @@
 # TokenBroker 🦞
 
-**The ultimate agentic toolkit for launching and managing tokens on [nad.fun](https://nad.fun) (Monad).**
+**The ultimate agentic toolkit for Builders to launch and manage living economies on [nad.fun](https://nad.fun) (Monad).**
 
-TokenBroker is a high-performance OpenClaw skillset designed to automate the entire lifecycle of a token launch—from codebase analysis to on-chain deployment and post-launch trading.
+TokenBroker is a professional-grade OpenClaw skillset that empowers agents to handle the entire lifecycle of a token launch—from hyper-local codebase analysis to autonomous on-chain trading and reputation building.
 
-## 🚀 Key Features
+## 🚀 Why TokenBroker?
 
--   **🔍 Multi-Mode Project Scanning**: Deep analysis of project directories to extract identity, tech stack, and brand voice.
--   **🎨 AI Metadata Generation**: Suggest creative token names symbols, and descriptions.
--   **⚓ Launch Orchestration**: Automate image upload, metadata pinning, and on-chain creation.
--   **📈 Integrated Trading Skill**: Enable agents to buy, sell, and track graduation progress autonomously.
--   **🕵️ Builder Reputation (Stats)**: Real-time trust scoring based on launch history and volume.
--   **✅ Ecosystem Tools**: Built-in skills for Monad faucet requests and contract verification.
--   **🤝 A2A Coordination**: Facilitate collaboration between specialized AI agents.
+Launch for your projects **on-the-go** with an agent that understands your code as well as you do.
 
-## 📂 Project Structure
+-   **🧠 Semantic Scanning**: Not just a file list. Deep analysis of tech stack and brand voice to create tokens that *fit*.
+-   **🎨 Intelligent Metadata**: AI-driven name, symbol, and description generation optimized for nad.fun narratives.
+-   **⚓ Vanity Orchestration**: 4-stage deployment sequence with IPFS pinning and vanity address (salt) mining.
+-   **📈 Autonomous Trading**: Enabling agents to buy, sell, and track graduation progress to Uniswap natively.
+-   **🕵️ Builder Trust Score**: Real-time reputation system based on launch performance and volume.
+-   **🤝 Agent-to-Agent Coordination**: Standardized protocols for multi-agent marketing and launch sync.
+
+## 📂 The Blueprint
+
+TokenBroker is built as a modular "Markdown Skillset". Each file in `tb_skill/` is a specialized module for your agent.
 
 ```bash
 TokenBroker/
-├── tb_skill/          # OpenClaw Markdown Skillset
-│   ├── SKILL.md       # Main Entry Point
+├── tb_skill/          # Modular Markdown Skillset
+│   ├── SKILL.md       # Entry Point & Index
 │   ├── LAUNCH.md      # Launch Flow (nad.fun)
-│   ├── TRADING.md     # Post-launch Interaction
+│   ├── TRADING.md     # Autonomous Interactions
+│   ├── PROMO.md       # A2A Scaling & Marketing
+│   ├── STATS.md       # Reputation Logic
 │   └── ...            # Supporting modules
-├── app/               # Next.js Web Application
-├── components/        # Shadcn UI Design System
-└── LICENSE            # MIT License
+├── app/               # Next.js Analytics & Builder Profile
+└── ...
 ```
 
-## 🛠️ Tech Stack & Skills
+## 🛠️ Tech Stack
 
 -   **Frontend**: Next.js, Tailwind CSS, Shadcn UI.
--   **Agents**: OpenClaw Skillset.
--   **Knowledge**: [Learn how Skills work](https://code.claude.com/docs/en/skills)
+-   **Core**: OpenClaw Skillset Architecture.
+-   **Knowledge**: [How Skills Work](https://code.claude.com/docs/en/skills)
 
-## 🦞 First Steps
+## 🦞 Get Started
 
-### For Agents (CLI Setup)
-Agents interact with skills via CLI. To add TokenBroker to your environment:
+### Install Skillset
+Add TokenBroker to your project's agent environment:
 ```bash
 git clone https://github.com/starrftw/tokenbroker .tokenbroker
 ```
 
-### Initial Prompts
-Try these to get your agent started:
-- *"Analyze this project and suggest if it's ready for a nad.fun launch."*
-- *"Based on our progress, suggest a token name and symbol to my human builder."*
-- *"Plan a launch schedule for the new token."*
+### Try These Prompts
+- *"Analyze my project architecture and suggest a token name that fits our brand voice."*
+- *"Based on our progress, suggested a community launch schedule to my human builder."*
+- *"Execute a liquidity check on my recently launched token."*
 
 ## 📜 License
 
