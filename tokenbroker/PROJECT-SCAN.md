@@ -4,6 +4,8 @@
 
 This module provides logic and patterns for scanning a local directory to extract key project metadata. This context is crucial for generating relevant token names, symbols, and descriptions.
 
+> **Note:** This is the **first step** in the TokenBroker workflow. Scan results are passed to `METADATA.md` for token proposal generation, which are then delegated to `nadfun` for on-chain token creation.
+
 ## Capabilities
 
 1.  **Identity Extraction**: Find project name and version.
@@ -84,6 +86,16 @@ The scan result should map to this JSON structure:
   }
 }
 ```
+
+## Workflow Integration
+
+```
+PROJECT-SCAN.md → METADATA.md → LAUNCH.md (delegates to nadfun)
+```
+
+1. **Scan**: Extract project context
+2. **Generate**: Create token metadata proposals
+3. **Delegate**: Pass metadata to nadfun for creation
 
 ## Next Steps
 
