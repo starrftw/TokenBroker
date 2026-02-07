@@ -1,6 +1,7 @@
 ---
 name: tokenbroker
 description: Meta-skill for GitHub project analysis and token launch orchestration. Scans repositories and delegates to nadfun for actual token deployment.
+version: 1.0.1
 metadata:
   tags: monad, nadfun, token, launch, orchestration, github, autonomous
 ---
@@ -125,6 +126,51 @@ REPUTATION_SCORE=...
 |---------|-----|----------|-----|
 | Testnet | https://testnet-rpc.monad.xyz | 10143 | https://dev-api.nad.fun |
 | Mainnet | https://rpc.monad.xyz | 143 | https://api.nadapp.net |
+
+## Security Best Practices
+
+**TokenBroker is a meta-skill that orchestrates operations but does not directly handle, store, or manage sensitive credentials.**
+
+### Credential Handling Architecture
+
+- **Orchestration Only**: TokenBroker coordinates workflows between skills but never directly accesses private keys, wallet credentials, or API secrets
+- **Runtime Injection**: All sensitive credentials are injected by the host environment at runtime via environment variables
+- **No Persistence**: The skill never logs, exfiltrates, or persists sensitive data to disk, storage systems, or third-party services
+- **Delegated Security**: Sensitive operations (wallet management, token creation, trading) are delegated to dependency skills (`nadfun`, `monad-development`) which implement their own security protocols
+
+### Environment Variable Placeholders
+
+When documenting configuration, use placeholder notation:
+
+```bash
+# GitHub credentials - provided by host environment
+GITHUB_TOKEN=${GITHUB_TOKEN}
+
+# Wallet private key - never handled by TokenBroker
+PRIVATE_KEY=${PRIVATE_KEY}
+
+# Builder identity - injected via A2A profile setup
+BUILDER_ID=${BUILDER_ID}
+```
+
+### Credential Boundaries
+
+| Credential Type | Handled By | TokenBroker Role |
+|----------------|------------|------------------|
+| GitHub PAT/OAuth | GitHub API directly | Requests token, doesn't store |
+| Wallet Private Key | `monad-development` skill | Orchestrates operations only |
+| Nad.fun API Key | `nadfun` skill | Delegates credential handling |
+| Builder Profile | A2A communication | Receives profile data only |
+
+### Security Disclaimer
+
+> **Important**: TokenBroker is designed with a security-first architecture. It explicitly avoids:
+> - Direct storage or management of private keys
+> - Writing credentials to configuration files
+> - Logging sensitive values in any form
+> - Transmitting credentials to third-party endpoints
+>
+> All credential handling is the responsibility of the host environment and dependency skills with their own security certifications.
 
 ---
 

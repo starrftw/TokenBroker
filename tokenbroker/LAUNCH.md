@@ -4,6 +4,8 @@
 
 TokenBroker handles project analysis and metadata generation, then delegates actual on-chain operations to the `nadfun` skill. This document explains the orchestration flow.
 
+> **Security Note**: TokenBroker is a meta-skill that orchestrates operations. All wallet credentials and sensitive operations are handled by the `nadfun` skill with its own security protocols. Credentials are injected by the host environment at runtime.
+
 ## Orchestration Flow
 
 ### Step 1: Analysis Complete (TokenBroker)
@@ -116,6 +118,17 @@ After nadfun completes the launch:
 | Image rejected | Upload a new image via nadfun's image endpoint |
 | Salt collision | nadfun will retry with new salt automatically |
 | Insufficient funds | User needs at least 10 MON for deployment |
+
+## Security Considerations
+
+TokenBroker delegates all sensitive operations to the `nadfun` skill:
+
+- **Wallet Management**: Handled by `nadfun` with secure credential injection
+- **Private Keys**: Never processed by TokenBroker - injected via `${PRIVATE_KEY}` environment variable
+- **Transaction Signing**: Occurs within the `nadfun` skill's secure context
+- **Token Creation**: All on-chain operations execute within dependency skills
+
+For detailed security practices, see the [Security Best Practices section in SKILL.md](./SKILL.md#security-best-practices).
 
 ---
 

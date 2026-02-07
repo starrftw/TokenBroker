@@ -2,6 +2,8 @@
 
 **Setup guide for TokenBroker skill.**
 
+> **Security Note**: TokenBroker orchestrates but does not store or manage sensitive credentials. All credentials are injected by the host environment.
+
 ## Quick Install
 
 ```bash
@@ -51,33 +53,55 @@ export GITHUB_TOKEN=ghp_your_token_here
 npx clawhub install tokenbroker
 ```
 
-### Step 4: Environment Configuration
+### Step 4: Environment Configuration (Advanced / Optional)
 
-The wizard creates a `.env` file with:
+> **Security Warning**: Manual `.env` configuration is for advanced users only. The recommended approach is A2A profile setup which handles credentials securely.
+
+If using manual configuration, the `.env` file should contain:
 
 ```bash
-# Network
+# Network Settings (non-sensitive)
 NETWORK=testnet
 
-# GitHub (set during OAuth)
-GITHUB_TOKEN=ghp_...
+# GitHub Token - injected by host environment
+GITHUB_TOKEN=${GITHUB_TOKEN}
 
-# Builder Profile (A2A auto-config)
-BUILDER_ID=...
-REPUTATION_SCORE=...
-
-# Optional: Nad.fun API key for higher rate limits
-NAD_API_KEY=...
+# Builder Profile (A2A auto-config preferred)
+BUILDER_ID=${BUILDER_ID}
+REPUTATION_SCORE=${REPUTATION_SCORE}
 ```
 
-## Manual Setup
+## Recommended: A2A Profile Setup
+
+The **preferred method** for credential management is A2A (Agent-to-Agent) communication:
+
+```typescript
+// Example: Secure A2A profile sync
+await invokeSkill("identity-service", {
+  action: "register_builder",
+  profile: {
+    github_username: "...",
+    preferred_token_symbol: "...",
+    reputation_enabled: true
+  }
+});
+```
+
+This method:
+- Never writes credentials to disk
+- Uses secure credential injection via the host environment
+- Follows established security protocols for agent communication
+
+## Manual Setup (Advanced Users Only)
+
+> **Security Warning**: Manual credential entry carries additional risk. Ensure your environment is secure before proceeding.
 
 If you prefer manual configuration:
 
-1. Create `.env` file:
+1. Create `.env` file (ensure proper file permissions):
 ```bash
 NETWORK=testnet
-GITHUB_TOKEN=ghp_your_token_here
+GITHUB_TOKEN=${GITHUB_TOKEN}
 ```
 
 2. Verify GitHub access:
@@ -89,6 +113,15 @@ curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user
 ```bash
 npx tokenbroker scan ./my-project
 ```
+
+## Credential Handling by Dependency Skills
+
+For sensitive operations, TokenBroker delegates to specialized skills:
+
+| Skill | Credential Type | Security Documentation |
+| ----- | --------------- | ---------------------- |
+| `nadfun` | Wallet private key, API keys | See [nad.fun/skill.md](https://nad.fun/skill.md) |
+| `monad-development` | Wallet credentials, contract keys | See [monad-development skill](https://gist.github.com/moltilad/31707d0fc206b960f4cbb13ea11954c2) |
 
 ## Requirements
 
@@ -104,3 +137,11 @@ After installation, TokenBroker will:
 2. Analyze codebase for token potential
 3. Suggest metadata proposals
 4. Wait for GitHub activity triggers
+
+## Security Checklist
+
+- [ ] Credentials injected via environment variables, not hardcoded
+- [ ] `.env` file excluded from version control (`.gitignore`)
+- [ ] No sensitive data logged during operations
+- [ ] A2A communication used for credential exchange when available
+- [ ] Regular rotation of GitHub tokens and API keys

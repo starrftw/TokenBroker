@@ -2,6 +2,8 @@
 
 **Instructions for the agent to monitor and identify project launch opportunities.**
 
+> **Security Note**: GitHub credentials are handled securely. TokenBroker requests tokens via OAuth/PAT but does not store or persist them. Tokens are injected by the host environment.
+
 ## Activity Monitoring
 
 Scan the current workspace or specified repository for the following signals:
@@ -80,3 +82,26 @@ When delegating to nadfun, pass GitHub context for ecosystem verification:
 ```
 
 This information helps the nad.fun ecosystem verify legitimate projects and may improve token visibility.
+
+## GitHub Token Security Best Practices
+
+| Aspect | Recommendation |
+|--------|---------------|
+| **Token Type** | OAuth tokens preferred over PATs when possible |
+| **Scope** | Use minimal scopes (read-only for monitoring) |
+| **Token Storage** | Never hardcode - use `${GITHUB_TOKEN}` placeholder |
+| **Lifetime** | Prefer short-lived tokens with automatic rotation |
+
+**Minimal PAT Scopes for TokenBroker:**
+- `public_repo` - Limit to public repositories only (recommended)
+- Avoid `repo` scope unless monitoring private repos is required
+
+TokenBroker only requires **read access** to repository metadata for:
+- Commit history analysis
+- Release tag detection  
+- README content extraction
+
+```bash
+# Example: Read-only token configuration
+GITHUB_TOKEN=${GITHUB_TOKEN}  # Scoped to: public_repo
+```
